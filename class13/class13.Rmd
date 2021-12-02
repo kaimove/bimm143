@@ -1,0 +1,68 @@
+---
+title: "class13"
+author: "Kai Movellan"
+date: "11/9/2021"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#do in terminal 
+```{r}
+#file.txt my_text_file.txt
+#zico:class13>rm file.txt
+#zico:class14> ls
+#my_text_file.txt
+#zico:class13>rm file.txt
+#zico:class14> ls
+#my_text_file.txt
+#zico:class13> less my_text_file.txt
+#zico:class13> cp my_text)file.txt another_file.txt
+#zico:class13> ls
+#my_text_file another_file
+#zico:class13> mv snother_file.txt tmp
+#zico:class13> ls
+
+
+#this is just a test editor and not a very fancy oine.
+#(END)
+```
+
+#Read TSV blast result file
+```{r}
+blast<-read.delim("mm-second.x.zebrafish.tsv")
+head(blast)
+```
+
+# Set the colnames to be:
+```{r}
+colnames(blast)<-c("qseqid", "sseqid", "pident", "length", "mismatch", "gapopen", "qstart", "qend", "sstart", "send", "evalue", "bitscore")
+head(blast)
+```
+
+```{r}
+hist(blast$bitscore)
+
+```
+
+```{r}
+## Asuming your blast results are stored in an object called 'b'
+plot(blast$pident  * (blast$qend - blast$qstart), blast$bitscore)
+```
+
+
+#Use ggplot for a nicer figure
+```{r}
+#install.packages("ggplot2")
+library(ggplot2)
+ggplot(blast, aes(pident, bitscore)) + geom_point(alpha=0.1) 
+```
+
+```{r}
+ggplot(blast, aes((pident * (qend - qstart)), bitscore)) + geom_point(alpha=0.1) + geom_smooth()
+```
