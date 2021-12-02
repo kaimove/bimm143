@@ -2,7 +2,9 @@
 This repo is for my UCSD bioinformatics class.
 This is a portfolio for my bioinformatics class 
 
-## COntents
+## Contents
 -introduction to r 
+
 -Data visualization to ggplot2 [source](https://github.com/kaimove/bimm143/blob/main/class05.R/class5.R)
+
 -some other
